@@ -9,7 +9,8 @@ defmodule Chatroom.Application do
     # Define workers and child supervisors to be supervised
     children = [
       # Start the Ecto repository
-      supervisor(Chatroom.Repo, []),
+      # For now, we don't need a store
+      # supervisor(Chatroom.Repo, []),
       # Start the endpoint when the application starts
       supervisor(ChatroomWeb.Endpoint, []),
       # Start your own worker by calling: Chatroom.Worker.start_link(arg1, arg2, arg3)
