@@ -1,5 +1,9 @@
 # Chatroom
 
+Elixir OTP Chatroom App.
+
+# Bootstrap
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
