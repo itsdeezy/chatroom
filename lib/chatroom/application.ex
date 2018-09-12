@@ -10,16 +10,13 @@ defmodule Chatroom.Application do
     children = [
       # For now, we don't need a store
       # supervisor(Chatroom.Repo, []),
-      # Start the endpoint when the application starts
       supervisor(ChatroomWeb.Endpoint, []),
-      # Start your own worker by calling: Chatroom.Worker.start_link(arg1, arg2, arg3)
-      # worker(Chatroom.Worker, [arg1, arg2, arg3]),
+      supervisor(Chatroom.Lobby, [])
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: Chatroom.Supervisor]
-    Supervisor.start_link(children, opts)
+    Supervisor.start_link(children, strategy: :one_for_one)
   end
 
   # Tell Phoenix to update the endpoint configuration

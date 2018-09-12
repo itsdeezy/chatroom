@@ -20,7 +20,7 @@ defmodule Chatroom.Mixfile do
   def application do
     [
       mod: {Chatroom.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :gproc]
     ]
   end
 
@@ -33,14 +33,15 @@ defmodule Chatroom.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:cowboy, "~> 1.0"},
+      {:gettext, "~> 0.11"},
+      {:gproc, "~> 0.8.0"},
       {:phoenix, "~> 1.3.4"},
-      {:phoenix_pubsub, "~> 1.0"},
       {:phoenix_ecto, "~> 3.2"},
-      {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 2.10"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
-      {:gettext, "~> 0.11"},
-      {:cowboy, "~> 1.0"}
+      {:phoenix_pubsub, "~> 1.0"},
+      {:postgrex, ">= 0.0.0"}
     ]
   end
 
@@ -54,7 +55,6 @@ defmodule Chatroom.Mixfile do
     [
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
-      # "test": ["ecto.create --quiet", "ecto.migrate", "test"]
       "test": ["test"]
     ]
   end

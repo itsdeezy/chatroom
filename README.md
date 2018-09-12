@@ -2,6 +2,15 @@
 
 Elixir OTP Chatroom App.
 
+# OTP Diagram
+
+````
+Chatroom.Lobby (one_for_all)
+|- d-supervises -> Chatroom.Room (one_for_one)
+                   |- supervises -> Chatroom.Host (one_for_one)
+                   |- d-supervises -> Chatroom.User 
+````
+
 # Bootstrap
 
 To start your Phoenix server:
